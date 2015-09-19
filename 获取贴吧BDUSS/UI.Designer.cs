@@ -141,7 +141,6 @@
             // 
             resources.ApplyResources(this.code, "code");
             this.code.Name = "code";
-            this.code.TextChanged += new System.EventHandler(this.code_TextChanged);
             // 
             // label3
             // 
@@ -152,7 +151,6 @@
             // 
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // pw
             // 

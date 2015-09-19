@@ -146,6 +146,36 @@
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="toolStripStatusLabel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>170, 17</value>
+  </data>
+  <data name="toolStripStatusLabel1.Text" xml:space="preserve">
+    <value>百度 BDUSS 获取器 // 作者：</value>
+  </data>
+  <data name="toolStripStatusLabel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 17</value>
+  </data>
+  <data name="toolStripStatusLabel2.Text" xml:space="preserve">
+    <value>Kenvix</value>
+  </data>
+  <data name="toolStripStatusLabel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 17</value>
+  </data>
+  <data name="toolStripStatusLabel3.Text" xml:space="preserve">
+    <value>@</value>
+  </data>
+  <data name="toolStripStatusLabel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 17</value>
+  </data>
+  <data name="toolStripStatusLabel4.Text" xml:space="preserve">
+    <value>StusGame GROUP</value>
+  </data>
+  <data name="toolStripStatusLabel5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 17</value>
+  </data>
+  <data name="toolStripStatusLabel5.Text" xml:space="preserve">
+    <value>// 版本：1.0</value>
+  </data>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 313</value>
   </data>
@@ -170,36 +200,6 @@
   <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="toolStripStatusLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 17</value>
-  </data>
-  <data name="toolStripStatusLabel1.Text" xml:space="preserve">
-    <value>百度 BDUSS 获取器 // 作者：</value>
-  </data>
-  <data name="toolStripStatusLabel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 17</value>
-  </data>
-  <data name="toolStripStatusLabel2.Text" xml:space="preserve">
-    <value>无名智者</value>
-  </data>
-  <data name="toolStripStatusLabel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 17</value>
-  </data>
-  <data name="toolStripStatusLabel3.Text" xml:space="preserve">
-    <value>@</value>
-  </data>
-  <data name="toolStripStatusLabel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 17</value>
-  </data>
-  <data name="toolStripStatusLabel4.Text" xml:space="preserve">
-    <value>StusGame GROUP</value>
-  </data>
-  <data name="toolStripStatusLabel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 17</value>
-  </data>
-  <data name="toolStripStatusLabel5.Text" xml:space="preserve">
-    <value>// 版本：1.0</value>
-  </data>
   <data name="panel_bduss.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 199</value>
   </data>
@@ -210,7 +210,7 @@
     <value>2</value>
   </data>
   <data name="panel_bduss.Text" xml:space="preserve">
-    <value>BDUSS 获取结果 [ 将此复制结果复制到云签到 ]</value>
+    <value>BDUSS 获取结果</value>
   </data>
   <data name="&gt;&gt;panel_bduss.Name" xml:space="preserve">
     <value>panel_bduss</value>
@@ -223,150 +223,6 @@
   </data>
   <data name="&gt;&gt;panel_bduss.ZOrder" xml:space="preserve">
     <value>3</value>
-  </data>
-  <data name="&gt;&gt;getcode.Name" xml:space="preserve">
-    <value>getcode</value>
-  </data>
-  <data name="&gt;&gt;getcode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;getcode.Parent" xml:space="preserve">
-    <value>panel_info</value>
-  </data>
-  <data name="&gt;&gt;getcode.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;submit.Name" xml:space="preserve">
-    <value>submit</value>
-  </data>
-  <data name="&gt;&gt;submit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;submit.Parent" xml:space="preserve">
-    <value>panel_info</value>
-  </data>
-  <data name="&gt;&gt;submit.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;code.Name" xml:space="preserve">
-    <value>code</value>
-  </data>
-  <data name="&gt;&gt;code.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;code.Parent" xml:space="preserve">
-    <value>panel_info</value>
-  </data>
-  <data name="&gt;&gt;code.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;label3.Name" xml:space="preserve">
-    <value>label3</value>
-  </data>
-  <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
-    <value>panel_info</value>
-  </data>
-  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>panel_info</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;pw.Name" xml:space="preserve">
-    <value>pw</value>
-  </data>
-  <data name="&gt;&gt;pw.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pw.Parent" xml:space="preserve">
-    <value>panel_info</value>
-  </data>
-  <data name="&gt;&gt;pw.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;user.Name" xml:space="preserve">
-    <value>user</value>
-  </data>
-  <data name="&gt;&gt;user.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;user.Parent" xml:space="preserve">
-    <value>panel_info</value>
-  </data>
-  <data name="&gt;&gt;user.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>panel_info</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;tip.Name" xml:space="preserve">
-    <value>tip</value>
-  </data>
-  <data name="&gt;&gt;tip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tip.Parent" xml:space="preserve">
-    <value>panel_info</value>
-  </data>
-  <data name="&gt;&gt;tip.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;codeimg.Name" xml:space="preserve">
-    <value>codeimg</value>
-  </data>
-  <data name="&gt;&gt;codeimg.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;codeimg.Parent" xml:space="preserve">
-    <value>panel_info</value>
-  </data>
-  <data name="&gt;&gt;codeimg.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="panel_info.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
-  </data>
-  <data name="panel_info.Size" type="System.Drawing.Size, System.Drawing">
-    <value>595, 167</value>
-  </data>
-  <data name="panel_info.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="panel_info.Text" xml:space="preserve">
-    <value>百度信息填写区</value>
-  </data>
-  <data name="&gt;&gt;panel_info.Name" xml:space="preserve">
-    <value>panel_info</value>
-  </data>
-  <data name="&gt;&gt;panel_info.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel_info.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;panel_info.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <data name="getcode.Location" type="System.Drawing.Point, System.Drawing">
     <value>16, 131</value>
@@ -614,6 +470,30 @@
   </data>
   <data name="&gt;&gt;codeimg.ZOrder" xml:space="preserve">
     <value>9</value>
+  </data>
+  <data name="panel_info.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
+  <data name="panel_info.Size" type="System.Drawing.Size, System.Drawing">
+    <value>595, 167</value>
+  </data>
+  <data name="panel_info.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="panel_info.Text" xml:space="preserve">
+    <value>百度信息填写区</value>
+  </data>
+  <data name="&gt;&gt;panel_info.Name" xml:space="preserve">
+    <value>panel_info</value>
+  </data>
+  <data name="&gt;&gt;panel_info.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel_info.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel_info.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="webcore.Location" type="System.Drawing.Point, System.Drawing">
     <value>632, 13</value>
@@ -905,7 +785,7 @@
     <value>633, 374</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>获取贴吧BDUSS - 贴吧云签到工具</value>
+    <value>获取贴吧BDUSS</value>
   </data>
   <data name="&gt;&gt;toolStripStatusLabel1.Name" xml:space="preserve">
     <value>toolStripStatusLabel1</value>

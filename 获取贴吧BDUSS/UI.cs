@@ -1,18 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using System.IO;
-using System.Web;
-using System.Net;
 using System.Text.RegularExpressions;
+using System.Diagnostics;
 
 namespace bdusstool
 {
-     
+
     public partial class main : Form
     {
         public static string vcodestr;
@@ -25,26 +19,17 @@ namespace bdusstool
 
         private void toolStripStatusLabel2_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("http://zhizhe8.net/"); 
+            Process.Start("http://zhizhe8.net/"); 
         }
 
         private void toolStripStatusLabel4_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("http://www.stus8.com/"); 
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void code_TextChanged(object sender, EventArgs e)
-        {
-
+            Process.Start("http://www.stus8.com/"); 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (user.Text == "" || pw.Text == "")
+            if (string.IsNullOrEmpty(user.Text) || string.IsNullOrEmpty(pw.Text))
             {
                 MessageBox.Show("请填写用户名和密码后再获取验证码", "获取验证码失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
