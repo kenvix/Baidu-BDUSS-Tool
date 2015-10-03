@@ -37,7 +37,7 @@ namespace bdusstool
         {
             if (string.IsNullOrEmpty(user.Text) || string.IsNullOrEmpty(pw.Text))
             {
-                MessageBox.Show("请填写用户名和密码后再获取验证码", "获取验证码失败");
+                error("请填写用户名和密码后再获取验证码", "获取验证码失败");
             }
             else
             {
@@ -118,11 +118,11 @@ namespace bdusstool
             }
             if (string.IsNullOrEmpty(user.Text) || string.IsNullOrEmpty(pw.Text))
             {
-                MessageBox.Show("请填写用户名、密码后再获取BDUSS", "登录百度失败");
+                error("请填写用户名、密码后再获取BDUSS", "登录百度失败");
             }
             else if (code.Enabled && string.IsNullOrEmpty(code.Text))
             {
-                MessageBox.Show("请填写验证码", "登录百度失败");
+                error("请填写验证码", "登录百度失败");
             }
             else
             {
@@ -179,39 +179,45 @@ namespace bdusstool
                     loginBaiduFailed(true);
                     return;
                 }
-                if (result.Contains("您输入的密码有误"))
+                if (result.Contains("密码有误"))
                 {
                     error("您输入的密码有误", "登录百度失败");
                     loginBaiduFailed(true);
                     return;
                 }
-                if (result.Contains("您输入的验证码有误"))
+                if (result.Contains("验证码有误"))
                 {
                     error("您输入的验证码有误", "登录百度失败");
                     loginBaiduFailed(true);
                     return;
                 }
-                if (result.Contains("请您输入验证码"))
+                if (result.Contains("输入验证码"))
                 {
                     error("请您输入验证码", "登录百度失败");
                     loginBaiduFailed(true);
                     return;
                 }
-                if (result.Contains("请您输入密码"))
+                if (result.Contains("输入密码"))
                 {
                     error("请您输入密码", "登录百度失败");
                     loginBaiduFailed(true);
                     return;
                 }
-                if (result.Contains("请填写手机/邮箱/用户名"))
+                if (result.Contains("请填写"))
                 {
                     error("请填写手机/邮箱/用户名", "登录百度失败");
                     loginBaiduFailed(true);
                     return;
                 }
-                if (result.Contains("账号格式错误"))
+                if (result.Contains("格式错误"))
                 {
                     error("账号格式错误", "登录百度失败");
+                    loginBaiduFailed(true);
+                    return;
+                }
+                if (result.Contains("登录保护"))
+                {
+                    error("需要登录保护才能获取BDUSS\r\n请前往百度安全中心关闭它，然后重试登录", "登录百度失败");
                     loginBaiduFailed(true);
                     return;
                 }

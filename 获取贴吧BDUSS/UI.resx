@@ -279,6 +279,9 @@
   <data name="&gt;&gt;submit.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="code.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="code.Location" type="System.Drawing.Point, System.Drawing">
     <value>85, 98</value>
   </data>
