@@ -37,17 +37,28 @@ namespace bdusstool
         {
             if (string.IsNullOrEmpty(user.Text) || string.IsNullOrEmpty(pw.Text))
             {
-                MessageBox.Show("请填写用户名和密码后再获取验证码", "获取验证码失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("请填写用户名和密码后再获取验证码", "获取验证码失败");
             }
             else
             {
-                var xurl = new Uri("http://wappass.baidu.com/passport/login");
-                var post = Encoding.UTF8.GetBytes("username=" + user.Text + "&password=" + pw.Text);
-                WebClient wc = new WebClient();
-                wc.Headers.Add("Content-Type", "application/x-www-form-urlencoded");
-                wc.Headers.Add("User-Agent", "X Phone");
-                wc.UploadDataCompleted += Wc_UploadDataCompleted;
-                wc.UploadDataAsync(xurl, post);
+                try
+                {
+                    submit.Enabled = false;
+                    submit.Text = "请稍候";
+                    var xurl = new Uri("http://wappass.baidu.com/passport/login");
+                    var post = Encoding.UTF8.GetBytes("username=" + user.Text + "&password=" + pw.Text);
+                    WebClient wc = new WebClient();
+                    wc.Headers.Add("Content-Type", "application/x-www-form-urlencoded");
+                    wc.Headers.Add("User-Agent", "X Phone");
+                    wc.UploadDataCompleted += Wc_UploadDataCompleted;
+                    wc.UploadDataAsync(xurl, post);
+                }
+                catch(Exception ex)
+                {
+                    error("获取验证码失败\r\n" + ex);
+                    loginBaiduFailed();
+                    return;
+                }
             }
         }
         #endregion
@@ -55,32 +66,40 @@ namespace bdusstool
         #region 当获取到验证码时
         private void Wc_UploadDataCompleted(object sender, UploadDataCompletedEventArgs e)
         {
-            var x = Encoding.GetEncoding("UTF-8").GetString(e.Result);
-            Regex vcode_regex = new Regex("<img src=\".*\" alt=\"wait...\" />");
-            var s = vcode_regex.Match(x).Value;
-            s = s.Replace("<img src=\"", "");
-            s = s.Replace("\" alt=\"wait...\" />", "");
-            Regex vr_regex = new Regex("<input type=\"hidden\" id=\"vcodeStr\" name=\"vcodestr\" value=\".*\"/>");
-            vcodestr = vr_regex.Match(x).Value;
-            vcodestr = vcodestr.Replace("<input type=\"hidden\" id=\"vcodeStr\" name=\"vcodestr\" value=\"", "");
-            vcodestr = vcodestr.Replace("\"/>", "");
-            codeimg.ImageLocation = s;
-            gottenVerifyCode++;
-            if (vcodestr.Length <= 0 && s.Length <= 0 && gottenVerifyCode > 3)
+            try
             {
-                code.Enabled = false;
-                code.Text = "无需验证码";
+                var x = Encoding.GetEncoding("UTF-8").GetString(e.Result);
+                Regex vcode_regex = new Regex("<img src=\".*\" alt=\"wait...\" />");
+                var s = vcode_regex.Match(x).Value;
+                s = s.Replace("<img src=\"", "");
+                s = s.Replace("\" alt=\"wait...\" />", "");
+                Regex vr_regex = new Regex("<input type=\"hidden\" id=\"vcodeStr\" name=\"vcodestr\" value=\".*\"/>");
+                vcodestr = vr_regex.Match(x).Value;
+                vcodestr = vcodestr.Replace("<input type=\"hidden\" id=\"vcodeStr\" name=\"vcodestr\" value=\"", "");
+                vcodestr = vcodestr.Replace("\"/>", "");
+                codeimg.ImageLocation = s;
+                gottenVerifyCode++;
+                if (vcodestr.Length <= 0 && s.Length <= 0 && gottenVerifyCode > 3)
+                {
+                    code.Enabled = false;
+                    code.Text = "无需验证码";
+                }
+                else if (vcodestr.Length <= 0 && s.Length <= 0 && gottenVerifyCode < 3)
+                {
+                    getVerifyCode();
+                    return;
+                }
+                else
+                {
+                    code.Enabled = true;
+                    code.Text = "";
+                }
             }
-            else if(vcodestr.Length <= 0 && s.Length <= 0 &&  gottenVerifyCode < 3)
+            catch(Exception ex)
             {
-                getVerifyCode();
-                return;
+                error("解析验证码失败\r\n" + ex);
             }
-            else
-            {
-                code.Enabled = true;
-                code.Text = "";
-            }
+            loginBaiduFailed();
         }
         #endregion
 
@@ -99,11 +118,11 @@ namespace bdusstool
             }
             if (string.IsNullOrEmpty(user.Text) || string.IsNullOrEmpty(pw.Text))
             {
-                MessageBox.Show("请填写用户名、密码后再获取BDUSS", "登录百度失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("请填写用户名、密码后再获取BDUSS", "登录百度失败");
             }
             else if (code.Enabled && string.IsNullOrEmpty(code.Text))
             {
-                MessageBox.Show("请填写验证码", "登录百度失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("请填写验证码", "登录百度失败");
             }
             else
             {
@@ -134,7 +153,7 @@ namespace bdusstool
                         wb.ContentLength = post.Length;
                         wb.CookieContainer = new CookieContainer();
                         Stream qr = wb.GetRequestStream();
-                        qr.Write(Encoding.UTF8.GetBytes(post), 0, post.Length);
+                        qr.Write(Encoding.GetEncoding("gb2312").GetBytes(post), 0, post.Length);
                         Stream ws = wb.GetResponse().GetResponseStream();
                         StreamReader wr = new StreamReader(ws);
                         result = wr.ReadToEnd();
@@ -154,40 +173,46 @@ namespace bdusstool
                     Application.DoEvents();
                 }
                 #region 检查是否成功登录
+                if (string.IsNullOrEmpty(cookie) || string.IsNullOrEmpty(result))
+                {
+                    error("服务器未响应","登录百度失败");
+                    loginBaiduFailed(true);
+                    return;
+                }
                 if (result.Contains("您输入的密码有误"))
                 {
-                    MessageBox.Show("您输入的密码有误\r\n若要重试，请点击获取验证码后重新输入验证码重试登录", "登录百度失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    loginBaiduFailed();
+                    error("您输入的密码有误", "登录百度失败");
+                    loginBaiduFailed(true);
                     return;
                 }
                 if (result.Contains("您输入的验证码有误"))
                 {
-                    MessageBox.Show("您输入的验证码有误\r\n若要重试，请点击获取验证码后重新输入验证码重试登录", "登录百度失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    loginBaiduFailed();
+                    error("您输入的验证码有误", "登录百度失败");
+                    loginBaiduFailed(true);
                     return;
                 }
                 if (result.Contains("请您输入验证码"))
                 {
-                    MessageBox.Show("请您输入验证码\r\n若要重试，请点击获取验证码后重新输入验证码重试登录", "登录百度失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    loginBaiduFailed();
+                    error("请您输入验证码", "登录百度失败");
+                    loginBaiduFailed(true);
                     return;
                 }
                 if (result.Contains("请您输入密码"))
                 {
-                    MessageBox.Show("请您输入密码\r\n若要重试，请点击获取验证码后重新输入验证码重试登录", "登录百度失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    loginBaiduFailed();
+                    error("请您输入密码", "登录百度失败");
+                    loginBaiduFailed(true);
                     return;
                 }
                 if (result.Contains("请填写手机/邮箱/用户名"))
                 {
-                    MessageBox.Show("请填写手机/邮箱/用户名\r\n若要重试，请点击获取验证码后重新输入验证码重试登录", "登录百度失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    loginBaiduFailed();
+                    error("请填写手机/邮箱/用户名", "登录百度失败");
+                    loginBaiduFailed(true);
                     return;
                 }
                 if (result.Contains("账号格式错误"))
                 {
-                    MessageBox.Show("账号格式错误\r\n若要重试，请点击获取验证码后重新输入验证码重试登录", "登录百度失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    loginBaiduFailed();
+                    error("账号格式错误", "登录百度失败");
+                    loginBaiduFailed(true);
                     return;
                 }
                 #endregion
@@ -197,7 +222,8 @@ namespace bdusstool
                 bc = bc.Replace("; ", "");
                 if (bc.Length <= 0)
                 {
-                    MessageBox.Show("无法登录到百度\r\n若要重试，如果你开启了登录保护，请前往百度安全中心关闭它，然后请点击获取验证码后重新输入验证码重试登录", "登录百度失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    error("无法登录到百度\r\n如果你开启了登录保护，请前往百度安全中心关闭它，然后重试登录", "登录百度失败");
+                    loginBaiduFailed(true);
                     return;
                 }
                 else
@@ -224,10 +250,14 @@ namespace bdusstool
         }
         #endregion
 
-        private void loginBaiduFailed()
+        private void loginBaiduFailed(bool reget = false)
         {
-            submit.Text = "提交信息";
+            submit.Text = "提交信息 (Enter)";
             submit.Enabled = true;
+            if(reget)
+            {
+                getVerifyCode();
+            }
         }
 
         void error(string msg, string title = "错误")
