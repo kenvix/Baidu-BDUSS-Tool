@@ -48,7 +48,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tip = new System.Windows.Forms.Label();
             this.codeimg = new System.Windows.Forms.PictureBox();
-            this.webcore = new System.Windows.Forms.WebBrowser();
+            this.hidePwd = new System.Windows.Forms.CheckBox();
             this.statusStrip1.SuspendLayout();
             this.panel_info.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.codeimg)).BeginInit();
@@ -109,6 +109,7 @@
             // 
             // panel_info
             // 
+            this.panel_info.Controls.Add(this.hidePwd);
             this.panel_info.Controls.Add(this.getcode);
             this.panel_info.Controls.Add(this.submit);
             this.panel_info.Controls.Add(this.code);
@@ -178,17 +179,19 @@
             this.codeimg.Name = "codeimg";
             this.codeimg.TabStop = false;
             // 
-            // webcore
+            // hidePwd
             // 
-            resources.ApplyResources(this.webcore, "webcore");
-            this.webcore.Name = "webcore";
-            this.webcore.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webcore_DocumentCompleted);
+            resources.ApplyResources(this.hidePwd, "hidePwd");
+            this.hidePwd.Checked = true;
+            this.hidePwd.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.hidePwd.Name = "hidePwd";
+            this.hidePwd.UseVisualStyleBackColor = true;
+            this.hidePwd.CheckedChanged += new System.EventHandler(this.hidePwd_CheckedChanged);
             // 
             // main
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.webcore);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.bduss);
             this.Controls.Add(this.panel_bduss);
@@ -225,8 +228,7 @@
         private System.Windows.Forms.Button submit;
         private System.Windows.Forms.Button getcode;
         private System.Windows.Forms.Label tip;
-        public System.Windows.Forms.WebBrowser webcore;
-
+        private System.Windows.Forms.CheckBox hidePwd;
     }
 }
 
