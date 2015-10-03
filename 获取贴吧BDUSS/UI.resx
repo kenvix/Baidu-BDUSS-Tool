@@ -228,16 +228,16 @@
     <value>True</value>
   </data>
   <data name="hidePwd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>300, 134</value>
+    <value>276, 134</value>
   </data>
   <data name="hidePwd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 16</value>
+    <value>96, 16</value>
   </data>
   <data name="hidePwd.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
   <data name="hidePwd.Text" xml:space="preserve">
-    <value>隐藏密码</value>
+    <value>隐藏密码 (&amp;H)</value>
   </data>
   <data name="&gt;&gt;hidePwd.Name" xml:space="preserve">
     <value>hidePwd</value>
@@ -259,13 +259,13 @@
     <value>16, 129</value>
   </data>
   <data name="submit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 25</value>
+    <value>145, 25</value>
   </data>
   <data name="submit.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
   <data name="submit.Text" xml:space="preserve">
-    <value>提交信息 (&amp;S)</value>
+    <value>提交信息 (Enter)</value>
   </data>
   <data name="&gt;&gt;submit.Name" xml:space="preserve">
     <value>submit</value>
