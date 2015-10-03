@@ -38,7 +38,6 @@
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel_bduss = new System.Windows.Forms.GroupBox();
             this.panel_info = new System.Windows.Forms.GroupBox();
-            this.getcode = new System.Windows.Forms.Button();
             this.submit = new System.Windows.Forms.Button();
             this.code = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,6 +48,7 @@
             this.tip = new System.Windows.Forms.Label();
             this.codeimg = new System.Windows.Forms.PictureBox();
             this.hidePwd = new System.Windows.Forms.CheckBox();
+            this.version = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip1.SuspendLayout();
             this.panel_info.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.codeimg)).BeginInit();
@@ -66,7 +66,8 @@
             this.toolStripStatusLabel2,
             this.toolStripStatusLabel3,
             this.toolStripStatusLabel4,
-            this.toolStripStatusLabel5});
+            this.toolStripStatusLabel5,
+            this.version});
             resources.ApplyResources(this.statusStrip1, "statusStrip1");
             this.statusStrip1.Name = "statusStrip1";
             // 
@@ -110,7 +111,6 @@
             // panel_info
             // 
             this.panel_info.Controls.Add(this.hidePwd);
-            this.panel_info.Controls.Add(this.getcode);
             this.panel_info.Controls.Add(this.submit);
             this.panel_info.Controls.Add(this.code);
             this.panel_info.Controls.Add(this.label3);
@@ -124,13 +124,6 @@
             this.panel_info.Name = "panel_info";
             this.panel_info.TabStop = false;
             // 
-            // getcode
-            // 
-            resources.ApplyResources(this.getcode, "getcode");
-            this.getcode.Name = "getcode";
-            this.getcode.UseVisualStyleBackColor = true;
-            this.getcode.Click += new System.EventHandler(this.button1_Click);
-            // 
             // submit
             // 
             resources.ApplyResources(this.submit, "submit");
@@ -142,6 +135,7 @@
             // 
             resources.ApplyResources(this.code, "code");
             this.code.Name = "code";
+            this.code.KeyDown += new System.Windows.Forms.KeyEventHandler(this.code_KeyDown);
             // 
             // label3
             // 
@@ -157,11 +151,13 @@
             // 
             resources.ApplyResources(this.pw, "pw");
             this.pw.Name = "pw";
+            this.pw.KeyDown += new System.Windows.Forms.KeyEventHandler(this.pw_KeyDown);
             // 
             // user
             // 
             resources.ApplyResources(this.user, "user");
             this.user.Name = "user";
+            this.user.KeyDown += new System.Windows.Forms.KeyEventHandler(this.user_KeyDown);
             // 
             // label1
             // 
@@ -172,12 +168,14 @@
             // 
             resources.ApplyResources(this.tip, "tip");
             this.tip.Name = "tip";
+            this.tip.Click += new System.EventHandler(this.tip_Click);
             // 
             // codeimg
             // 
             resources.ApplyResources(this.codeimg, "codeimg");
             this.codeimg.Name = "codeimg";
             this.codeimg.TabStop = false;
+            this.codeimg.Click += new System.EventHandler(this.codeimg_Click);
             // 
             // hidePwd
             // 
@@ -187,6 +185,11 @@
             this.hidePwd.Name = "hidePwd";
             this.hidePwd.UseVisualStyleBackColor = true;
             this.hidePwd.CheckedChanged += new System.EventHandler(this.hidePwd_CheckedChanged);
+            // 
+            // version
+            // 
+            this.version.Name = "version";
+            resources.ApplyResources(this.version, "version");
             // 
             // main
             // 
@@ -226,9 +229,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox codeimg;
         private System.Windows.Forms.Button submit;
-        private System.Windows.Forms.Button getcode;
         private System.Windows.Forms.Label tip;
         private System.Windows.Forms.CheckBox hidePwd;
+        private System.Windows.Forms.ToolStripStatusLabel version;
     }
 }
 
