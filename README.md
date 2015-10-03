@@ -10,7 +10,7 @@
 .Net Framework 4.0     
 http://www.microsoft.com/zh-cn/download/details.aspx?id=17718
 ##文件结构说明
-/Release 已编译好的正式版本
+/Release 已编译好的正式版本      
 /获取贴吧BDUSS 源代码
 ##其他
 StusGame GROUP:http://www.stus8.com      
