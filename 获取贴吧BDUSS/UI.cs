@@ -243,19 +243,6 @@ namespace bdusstool
 
         #endregion
 
-        #region 当提交用户信息完成后
-        private void Wb_UploadStringCompleted(object sender, UploadStringCompletedEventArgs e)
-        {
-            /*
-            var p = Encoding.GetEncoding("UTF-8").GetString(e.Result);
-           
-
-            //var cookie = ;
-            
-            */
-        }
-        #endregion
-
         private void loginBaiduFailed(bool reget = false)
         {
             submit.Text = "提交信息 (Enter)";
@@ -271,6 +258,7 @@ namespace bdusstool
             MessageBox.Show(msg, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        #region 键盘事件
         private void hidePwd_CheckedChanged(object sender, EventArgs e)
         {
             if(hidePwd.Checked)
@@ -315,5 +303,6 @@ namespace bdusstool
         {
             checkKeyDown(e);
         }
+        #endregion
     }
 }
