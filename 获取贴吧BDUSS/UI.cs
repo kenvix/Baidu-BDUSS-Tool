@@ -41,34 +41,53 @@ namespace bdusstool
             }
             else
             {
-                try
+                submit.Enabled = false;
+                submit.Text = "请稍候";
+                string errorMsg = "";
+                string post = "username=" + user.Text + "&password=" + pw.Text;
+                string result = "";
+                Thread th = new Thread(() => {
+                    try
+                    {
+                        var wb = (HttpWebRequest)WebRequest.Create("http://wappass.baidu.com/passport/login");
+                        wb.Method = "POST";
+                        wb.ContentType = "application/x-www-form-urlencoded";
+                        wb.UserAgent = "Phone gdffdghdfhtg";
+                        wb.ContentLength = post.Length;
+                        Stream qr = wb.GetRequestStream();
+                        qr.Write(Encoding.GetEncoding("gb2312").GetBytes(post), 0, post.Length);
+                        Stream ws = wb.GetResponse().GetResponseStream();
+                        StreamReader wr = new StreamReader(ws);
+                        result = wr.ReadToEnd();
+                        wr.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        errorMsg = ex.Message;
+                    }
+                });
+                th.SetApartmentState(ApartmentState.STA);
+                th.Start();
+                while (!th.Join(25))
                 {
-                    submit.Enabled = false;
-                    submit.Text = "请稍候";
-                    var xurl = new Uri("http://wappass.baidu.com/passport/login");
-                    var post = Encoding.UTF8.GetBytes("username=" + user.Text + "&password=" + pw.Text);
-                    WebClient wc = new WebClient();
-                    wc.Headers.Add("Content-Type", "application/x-www-form-urlencoded");
-                    wc.Headers.Add("User-Agent", "X Phone");
-                    wc.UploadDataCompleted += Wc_UploadDataCompleted;
-                    wc.UploadDataAsync(xurl, post);
+                    Application.DoEvents();
                 }
-                catch(Exception ex)
+                if (!string.IsNullOrEmpty(errorMsg))
                 {
-                    error("获取验证码失败\r\n" + ex);
-                    loginBaiduFailed();
+                    error("网络请求出错：\r\n" + errorMsg, "登录百度失败");
+                    loginBaiduFailed(true);
                     return;
                 }
+                getCodeCompleted(result);
             }
         }
         #endregion
 
         #region 当获取到验证码时
-        private void Wc_UploadDataCompleted(object sender, UploadDataCompletedEventArgs e)
+        private void getCodeCompleted(string x)
         {
             try
             {
-                var x = Encoding.GetEncoding("UTF-8").GetString(e.Result);
                 Regex vcode_regex = new Regex("<img src=\".*\" alt=\"wait...\" />");
                 var s = vcode_regex.Match(x).Value;
                 s = s.Replace("<img src=\"", "");
@@ -143,6 +162,7 @@ namespace bdusstool
 
                 string cookie = "";
                 string result = "";
+                string errorMsg = "";
                 Thread th = new Thread(() => {
                     try
                     {
@@ -162,9 +182,8 @@ namespace bdusstool
                     }
                     catch (Exception ex)
                     {
-                        error("网络请求出错：\r\n" + ex.Message, "登录百度失败");
+                        errorMsg = ex.Message;
                     }
-
                 });
                 th.SetApartmentState(ApartmentState.STA);
                 th.Start();
@@ -173,6 +192,12 @@ namespace bdusstool
                     Application.DoEvents();
                 }
                 #region 检查是否成功登录
+                if (!string.IsNullOrEmpty(errorMsg))
+                {
+                    error("网络请求出错：\r\n" + errorMsg, "登录百度失败");
+                    loginBaiduFailed(true);
+                    return;
+                }
                 if (string.IsNullOrEmpty(cookie) || string.IsNullOrEmpty(result))
                 {
                     error("服务器未响应","登录百度失败");
