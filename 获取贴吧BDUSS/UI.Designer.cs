@@ -36,8 +36,10 @@
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.version = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel_bduss = new System.Windows.Forms.GroupBox();
             this.panel_info = new System.Windows.Forms.GroupBox();
+            this.hidePwd = new System.Windows.Forms.CheckBox();
             this.submit = new System.Windows.Forms.Button();
             this.code = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,8 +49,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tip = new System.Windows.Forms.Label();
             this.codeimg = new System.Windows.Forms.PictureBox();
-            this.hidePwd = new System.Windows.Forms.CheckBox();
-            this.version = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip1.SuspendLayout();
             this.panel_info.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.codeimg)).BeginInit();
@@ -102,6 +102,11 @@
             this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
             resources.ApplyResources(this.toolStripStatusLabel5, "toolStripStatusLabel5");
             // 
+            // version
+            // 
+            this.version.Name = "version";
+            resources.ApplyResources(this.version, "version");
+            // 
             // panel_bduss
             // 
             resources.ApplyResources(this.panel_bduss, "panel_bduss");
@@ -124,6 +129,15 @@
             this.panel_info.Name = "panel_info";
             this.panel_info.TabStop = false;
             // 
+            // hidePwd
+            // 
+            resources.ApplyResources(this.hidePwd, "hidePwd");
+            this.hidePwd.Checked = true;
+            this.hidePwd.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.hidePwd.Name = "hidePwd";
+            this.hidePwd.UseVisualStyleBackColor = true;
+            this.hidePwd.CheckedChanged += new System.EventHandler(this.hidePwd_CheckedChanged);
+            // 
             // submit
             // 
             resources.ApplyResources(this.submit, "submit");
@@ -133,6 +147,7 @@
             // 
             // code
             // 
+            this.code.AllowDrop = true;
             resources.ApplyResources(this.code, "code");
             this.code.Name = "code";
             this.code.KeyDown += new System.Windows.Forms.KeyEventHandler(this.code_KeyDown);
@@ -149,12 +164,14 @@
             // 
             // pw
             // 
+            this.pw.AllowDrop = true;
             resources.ApplyResources(this.pw, "pw");
             this.pw.Name = "pw";
             this.pw.KeyDown += new System.Windows.Forms.KeyEventHandler(this.pw_KeyDown);
             // 
             // user
             // 
+            this.user.AllowDrop = true;
             resources.ApplyResources(this.user, "user");
             this.user.Name = "user";
             this.user.KeyDown += new System.Windows.Forms.KeyEventHandler(this.user_KeyDown);
@@ -177,22 +194,9 @@
             this.codeimg.TabStop = false;
             this.codeimg.Click += new System.EventHandler(this.codeimg_Click);
             // 
-            // hidePwd
-            // 
-            resources.ApplyResources(this.hidePwd, "hidePwd");
-            this.hidePwd.Checked = true;
-            this.hidePwd.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.hidePwd.Name = "hidePwd";
-            this.hidePwd.UseVisualStyleBackColor = true;
-            this.hidePwd.CheckedChanged += new System.EventHandler(this.hidePwd_CheckedChanged);
-            // 
-            // version
-            // 
-            this.version.Name = "version";
-            resources.ApplyResources(this.version, "version");
-            // 
             // main
             // 
+            this.AllowDrop = true;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.statusStrip1);
